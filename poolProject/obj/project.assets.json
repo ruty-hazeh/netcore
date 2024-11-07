@@ -88,6 +88,16 @@
         "frameworkReferences": [
           "Microsoft.AspNetCore.App"
         ]
+      },
+      "library/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v6.0",
+        "compile": {
+          "bin/placeholder/library.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/library.dll": {}
+        }
       }
     }
   },
@@ -216,11 +226,17 @@
         "swashbuckle.aspnetcore.swaggerui.6.2.3.nupkg.sha512",
         "swashbuckle.aspnetcore.swaggerui.nuspec"
       ]
+    },
+    "library/1.0.0": {
+      "type": "project",
+      "path": "../library/library.csproj",
+      "msbuildProject": "../library/library.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net6.0": [
-      "Swashbuckle.AspNetCore >= 6.2.3"
+      "Swashbuckle.AspNetCore >= 6.2.3",
+      "library >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -254,7 +270,11 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\User\\Desktop\\poolProject\\library\\library.csproj": {
+              "projectPath": "C:\\Users\\User\\Desktop\\poolProject\\library\\library.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
