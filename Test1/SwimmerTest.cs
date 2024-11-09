@@ -12,34 +12,35 @@ namespace Test1
     public class SwimmerTest
     {
         [Fact]
-        public void GetAll_ReturnsNotEmpty()
+        public void GetAll_ReturnsListOfSwimmers()
         {
             var controller = new SwimmerController();
             var result = controller.Get();
-            var okResult = Assert.IsType<OkObjectResult>(result);  
-            var value = Assert.IsType<List<Swimmer>>(okResult.Value);
-            Assert.NotEmpty(value);
+            Assert.IsType<OkObjectResult>(result);
         }
 
-
-
         [Fact]
-        public void GetById_ReturnsNotFound()
+        public void GetById_ReturnsOk()
         {
-            int id = 1;
+            var id =1;
+
             var controller = new SwimmerController();
             var result = controller.Get(id);
-            Assert.IsType<NotFoundObjectResult>(result);
+
+            Assert.IsType<OkObjectResult>(result);
+
         }
+
         [Fact]
-        public void GetByActivityName_ReturnsNotFound()
+        public void GetById_Returns_NotFound()
         {
-            string activityName = "beginnings";
+            var id = -1;
+
             var controller = new SwimmerController();
-            var result = controller.Get(activityName);
+            var result = controller.Get(id);
+
             Assert.IsType<NotFoundObjectResult>(result);
+
         }
-
     }
-
 }

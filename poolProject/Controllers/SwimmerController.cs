@@ -12,14 +12,13 @@ namespace poolProject.Controllers
     {
 
         [HttpGet]
-        public ActionResult<List<Swimmer>> Get()
+        public ActionResult Get()
         {
             return Ok(Data.swimmers);
         }
         [HttpGet("{id:int}")]
-        public ActionResult<Swimmer> Get(int id)
+        public ActionResult Get(int id)
         {
-
             Swimmer swimmer= Data.swimmers.SingleOrDefault(s => s.Id == id);
             if(swimmer==null)
                 return NotFound("Swimmer not found");
@@ -27,7 +26,7 @@ namespace poolProject.Controllers
         }
 
         [HttpGet("activity/{activityName}")]
-        public ActionResult<List<Swimmer>> Get(string activityName)
+        public ActionResult Get(string activityName)
         {
             Activity act = Data.activities.FirstOrDefault(a => a.Name.Equals(activityName));
             if (act == null)

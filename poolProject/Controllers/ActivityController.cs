@@ -12,13 +12,13 @@ namespace poolProject.Controllers
     {
 
         [HttpGet]
-        public ActionResult<List<Activity>> Get()
+        public ActionResult Get()
         {
             return Ok(Data.activities);
         }
 
         [HttpGet("{id:int}")]
-        public ActionResult<Activity> Get(int id)
+        public ActionResult Get(int id)
         {
             Activity activity = Data.activities.FirstOrDefault(a => a.Id == id);
             if (activity == null)
@@ -27,7 +27,7 @@ namespace poolProject.Controllers
         }
 
         [HttpGet("guide/{guideName}")]
-        public ActionResult<List<Activity>> Get(string guideName)
+        public ActionResult Get(string guideName)
         {
             Guide gui = Data.guides.FirstOrDefault(g => g.Name.Equals(guideName));
             if (gui == null)

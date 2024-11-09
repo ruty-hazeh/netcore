@@ -11,13 +11,13 @@ namespace poolProject.Controllers
     public class GuideController : ControllerBase
     {
         [HttpGet]
-        public ActionResult<List<Guide>> Get()
+        public ActionResult Get()
         {
             return Ok(Data.guides);
         }
 
         [HttpGet("{id:int}")]
-        public ActionResult<Guide> Get(int id)
+        public ActionResult Get(int id)
         {
             Guide guide= Data.guides.SingleOrDefault(g => g.Id == id);
             if(guide == null)

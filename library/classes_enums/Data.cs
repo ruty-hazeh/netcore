@@ -13,7 +13,7 @@ namespace poolProject
         public static int ActivityCount { get; set; }
 
 
-        public Data()
+        static Data()
         {
             guides = new List<Guide>() { new Guide() { Id = 1, Name = "Chaim", Age = 32, GenderGuide = Gender.Male, ActivityName = "Free Swimming" } };
             GuideCount = 1;

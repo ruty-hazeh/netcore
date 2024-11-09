@@ -105,10 +105,9 @@ C:\Users\User\Desktop\poolProject\Test1\obj\Debug\net6.0\Test1.GeneratedMSBuildE
 C:\Users\User\Desktop\poolProject\Test1\obj\Debug\net6.0\Test1.AssemblyInfoInputs.cache
 C:\Users\User\Desktop\poolProject\Test1\obj\Debug\net6.0\Test1.AssemblyInfo.cs
 C:\Users\User\Desktop\poolProject\Test1\obj\Debug\net6.0\Test1.csproj.CoreCompileInputs.cache
-C:\Users\User\Desktop\poolProject\Test1\obj\Debug\net6.0\Test1.sourcelink.json
-C:\Users\User\Desktop\poolProject\Test1\obj\Debug\net6.0\Test1.csproj.Up2Date
 C:\Users\User\Desktop\poolProject\Test1\obj\Debug\net6.0\Test1.dll
 C:\Users\User\Desktop\poolProject\Test1\obj\Debug\net6.0\refint\Test1.dll
 C:\Users\User\Desktop\poolProject\Test1\obj\Debug\net6.0\Test1.pdb
 C:\Users\User\Desktop\poolProject\Test1\obj\Debug\net6.0\Test1.genruntimeconfig.cache
 C:\Users\User\Desktop\poolProject\Test1\obj\Debug\net6.0\ref\Test1.dll
+C:\Users\User\Desktop\poolProject\Test1\obj\Debug\net6.0\Test1.csproj.CopyComplete

@@ -1139,10 +1139,7 @@
       "xunit.runner.visualstudio/2.4.3": {},
       "library/1.0.0": {
         "runtime": {
-          "library.dll": {
-            "assemblyVersion": "1.0.0",
-            "fileVersion": "1.0.0.0"
-          }
+          "library.dll": {}
         }
       },
       "poolProject/1.0.0": {
@@ -1151,10 +1148,7 @@
           "library": "1.0.0"
         },
         "runtime": {
-          "poolProject.dll": {
-            "assemblyVersion": "1.0.0",
-            "fileVersion": "1.0.0.0"
-          }
+          "poolProject.dll": {}
         }
       }
     }
