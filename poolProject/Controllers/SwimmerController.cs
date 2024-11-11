@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using library.classes_enums;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Reflection;
 
@@ -10,16 +11,22 @@ namespace poolProject.Controllers
     [ApiController]
     public class SwimmerController : ControllerBase
     {
+        public static int SwimmerCount { get; set; }
+        private readonly IDataContext _context;
+        public SwimmerController(IDataContext context)
+        {
+            _context = context;
+        }
 
         [HttpGet]
         public ActionResult Get()
         {
-            return Ok(Data.swimmers);
+            return Ok(_context.swimmers);
         }
         [HttpGet("{id:int}")]
         public ActionResult Get(int id)
         {
-            Swimmer swimmer= Data.swimmers.SingleOrDefault(s => s.Id == id);
+            Swimmer swimmer= _context.swimmers.SingleOrDefault(s => s.Id == id);
             if(swimmer==null)
                 return NotFound("Swimmer not found");
             return Ok(swimmer);
@@ -28,25 +35,25 @@ namespace poolProject.Controllers
         [HttpGet("activity/{activityName}")]
         public ActionResult Get(string activityName)
         {
-            Activity act = Data.activities.FirstOrDefault(a => a.Name.Equals(activityName));
+            Activity act = _context.activities.FirstOrDefault(a => a.Name.Equals(activityName));
             if (act == null)
             {
                 return NotFound("not fount this activity");
             }
-            return Ok(Data.swimmers.Where(a => a.ActivityId == act.Id).ToList());
+            return Ok(_context.swimmers.Where(a => a.ActivityId == act.Id).ToList());
         }
 
         [HttpPost]
         public void Post([FromBody] Swimmer s)
         {
-            s.Id = ++Data.SwimmerCount;
-            Data.swimmers.Add(s);
+            s.Id = ++SwimmerCount;
+            _context.swimmers.Add(s);
         }
 
         [HttpPut("{id}")]
         public void Put(int id, [FromBody] Swimmer s)
         {
-            Swimmer swimmer = Data.swimmers.SingleOrDefault(sw => sw.Id == id);
+            Swimmer swimmer = _context.swimmers.SingleOrDefault(sw => sw.Id == id);
             swimmer.Name = s.Name;
             swimmer.Age = s.Age;
             swimmer.GenderSwimmer = s.GenderSwimmer;
@@ -56,7 +63,7 @@ namespace poolProject.Controllers
         [HttpPut("{id}/status")]
         public void Put( int id,bool status)
         {
-            Data.swimmers.SingleOrDefault(s => s.Id == id).Status = status;
+            _context.swimmers.SingleOrDefault(s => s.Id == id).Status = status;
         }
 
     }

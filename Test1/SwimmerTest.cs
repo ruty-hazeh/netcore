@@ -11,21 +11,26 @@ namespace Test1
 {
     public class SwimmerTest
     {
+        private readonly SwimmerController _controller;
+        public SwimmerTest()
+        {
+            FakeContext context=new FakeContext();  
+            _controller = new SwimmerController(context);
+        }
+
         [Fact]
         public void GetAll_ReturnsListOfSwimmers()
         {
-            var controller = new SwimmerController();
-            var result = controller.Get();
+            var result = _controller.Get();
             Assert.IsType<OkObjectResult>(result);
         }
 
         [Fact]
         public void GetById_ReturnsOk()
         {
-            var id =1;
+            var id =2;
 
-            var controller = new SwimmerController();
-            var result = controller.Get(id);
+            var result = _controller.Get(id);
 
             Assert.IsType<OkObjectResult>(result);
 
@@ -34,10 +39,9 @@ namespace Test1
         [Fact]
         public void GetById_Returns_NotFound()
         {
-            var id = -1;
+            var id = 1;
 
-            var controller = new SwimmerController();
-            var result = controller.Get(id);
+            var result = _controller.Get(id);
 
             Assert.IsType<NotFoundObjectResult>(result);
 
