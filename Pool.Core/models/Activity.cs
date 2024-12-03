@@ -3,14 +3,12 @@
     public class Activity
     {
         public int Id { get; set; }
-        public string Name { get; set; }
-        public TimeSpan BeginHour { get; set; }
-        public TimeSpan EndHour { get; set; }
-        public Day ActivityDay { get; set; }
-        public int GuideId { get; set; }
-        //public AgeRange AgeActivity { get; set; }
-        //public Gender GenderActivity { get; set; }
-        public bool Status { get; set; } = true;
+        public string Name { get; set; }//שם הפעילות
+        public TimeSpan BeginHour { get; set; }//שעת התחלה
+        public TimeSpan EndHour { get; set; }//שעת סיום
+        public Day ActivityDay { get; set; }//יום הפעילות
+        public int GuideId { get; set; }//קוד מדריך
+        public bool Status { get; set; } = true;//סטטוס פעילות
 
     }
 }

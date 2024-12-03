@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\User\\Desktop\\poolProject\\library\\library.csproj": {}
+    "C:\\Users\\User\\Desktop\\‏‏‏‏poolProject - עותק - עותק\\library\\library.csproj": {}
   },
   "projects": {
-    "C:\\Users\\User\\Desktop\\poolProject\\library\\library.csproj": {
+    "C:\\Users\\User\\Desktop\\‏‏‏‏poolProject - עותק - עותק\\library\\library.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\User\\Desktop\\poolProject\\library\\library.csproj",
+        "projectUniqueName": "C:\\Users\\User\\Desktop\\‏‏‏‏poolProject - עותק - עותק\\library\\library.csproj",
         "projectName": "library",
-        "projectPath": "C:\\Users\\User\\Desktop\\poolProject\\library\\library.csproj",
+        "projectPath": "C:\\Users\\User\\Desktop\\‏‏‏‏poolProject - עותק - עותק\\library\\library.csproj",
         "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\User\\Desktop\\poolProject\\library\\obj\\",
+        "outputPath": "C:\\Users\\User\\Desktop\\‏‏‏‏poolProject - עותק - עותק\\library\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

@@ -22,7 +22,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\poolProject\poolProject.csproj" />
+    <ProjectReference Include="..\Pool.Api\Pool.Api.csproj" />
+    <ProjectReference Include="..\Pool.Core\Pool.Core.csproj" />
+    <ProjectReference Include="..\Pool.Data\Pool.Data.csproj" />
+    <ProjectReference Include="..\Pool.Service\Pool.Service.csproj" />
   </ItemGroup>
 
 </Project>

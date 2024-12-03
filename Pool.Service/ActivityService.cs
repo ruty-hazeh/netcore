@@ -12,16 +12,42 @@ namespace Pool.Service
 {
     public class ActivityService:IActivityService
     {
+        private static int ActivityCount = 2;
+
         private readonly IActivityRepository _activityRepository;
         public ActivityService(IActivityRepository activityRepository)
         {
             _activityRepository = activityRepository;   
         }
 
-
-        public List<Activity> GetALL()
+        public List<Activity> GetAll()
         {
-            return _activityRepository.GetList();
+            return _activityRepository.GetAll();
         }
+        public Activity GetById(int id)
+        {
+            return _activityRepository.GetById(id);
+        }
+        public List<Activity> GetActivitiesByDay(Day activityDay)
+        {
+            return _activityRepository.GetActivitiesByDay(activityDay);
+        }
+        public void Post(Activity activity)
+        { 
+            activity.Id = ++ActivityCount;
+            _activityRepository.Post(activity);
+        }
+        public void Put(int id, Activity activity)
+        {
+            _activityRepository.Put(id, activity);
+        }
+        public void PutStatus(int id, bool status)
+        {
+            _activityRepository.PutStatus(id, status);
+        }
+
+
+
+
     }
 }

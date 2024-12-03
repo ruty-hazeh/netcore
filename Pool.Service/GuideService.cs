@@ -12,16 +12,40 @@ namespace Pool.Service
 {
     public class GuideService : IGuideService
     {
+        private static int GuideCount = 2;
+
         private readonly IGuideRepository _guideRepository;
         public GuideService(IGuideRepository guideRepository)
         {
             _guideRepository = guideRepository;
         }
 
-
-        public List<Guide> GetALL()
+        public List<Guide> GetAll()
         {
-            return _guideRepository.GetList();
+            return _guideRepository.GetAll();
         }
+
+        public Guide GetById(int id)
+        {
+            return _guideRepository.GetById(id);
+        }
+        public List<Guide> GetGuidesByActivity(string activityName)
+        {
+            return _guideRepository.GetGuidesByActivity(activityName);
+        }
+        public void Post(Guide guide)
+        {
+            guide.Id = ++GuideCount;
+            _guideRepository.Post(guide);
+        }
+        public void Put(int id, Guide guide)
+        {
+            _guideRepository.Put(id, guide);
+        }
+        public void PutStatus(int id, bool status)
+        {
+            _guideRepository.PutStatus(id, status);
+        }
+
     }
 }

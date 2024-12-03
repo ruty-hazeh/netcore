@@ -3,19 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32825.248
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "poolProject", "poolProject\poolProject.csproj", "{68ACF965-4D9B-4C5B-93E4-741579CC9553}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "library", "library\library.csproj", "{F602D405-F2CB-4192-A4E3-72175E773373}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Test1", "Test1\Test1.csproj", "{EA9CF161-46DE-48D2-8040-56F904EC656E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pool.Api", "Pool.Api\Pool.Api.csproj", "{781DDC24-256B-4042-8DD8-4125542C2E49}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pool.Api", "Pool.Api\Pool.Api.csproj", "{781DDC24-256B-4042-8DD8-4125542C2E49}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pool.Core", "Pool.Core\Pool.Core.csproj", "{948AC7C4-ED44-45BA-A886-68929C5541CD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pool.Core", "Pool.Core\Pool.Core.csproj", "{948AC7C4-ED44-45BA-A886-68929C5541CD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pool.Data", "Pool.Data\Pool.Data.csproj", "{E42B333E-F371-4269-83E6-61088B7613AF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pool.Data", "Pool.Data\Pool.Data.csproj", "{E42B333E-F371-4269-83E6-61088B7613AF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pool.Service", "Pool.Service\Pool.Service.csproj", "{881285B7-30BE-424A-9258-A0F74362662A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pool.Service", "Pool.Service\Pool.Service.csproj", "{881285B7-30BE-424A-9258-A0F74362662A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,14 +19,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{68ACF965-4D9B-4C5B-93E4-741579CC9553}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{68ACF965-4D9B-4C5B-93E4-741579CC9553}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{68ACF965-4D9B-4C5B-93E4-741579CC9553}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{68ACF965-4D9B-4C5B-93E4-741579CC9553}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F602D405-F2CB-4192-A4E3-72175E773373}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F602D405-F2CB-4192-A4E3-72175E773373}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F602D405-F2CB-4192-A4E3-72175E773373}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F602D405-F2CB-4192-A4E3-72175E773373}.Release|Any CPU.Build.0 = Release|Any CPU
 		{EA9CF161-46DE-48D2-8040-56F904EC656E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{EA9CF161-46DE-48D2-8040-56F904EC656E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EA9CF161-46DE-48D2-8040-56F904EC656E}.Release|Any CPU.ActiveCfg = Release|Any CPU

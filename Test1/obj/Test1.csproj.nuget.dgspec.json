@@ -1,17 +1,92 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\User\\Desktop\\poolProject\\Test1\\Test1.csproj": {}
+    "C:\\Users\\User\\Desktop\\‏‏‏‏poolProject - עותק - עותק\\Test1\\Test1.csproj": {}
   },
   "projects": {
-    "C:\\Users\\User\\Desktop\\poolProject\\library\\library.csproj": {
+    "C:\\Users\\User\\Desktop\\‏‏‏‏poolProject - עותק - עותק\\Pool.Api\\Pool.Api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\User\\Desktop\\poolProject\\library\\library.csproj",
-        "projectName": "library",
-        "projectPath": "C:\\Users\\User\\Desktop\\poolProject\\library\\library.csproj",
+        "projectUniqueName": "C:\\Users\\User\\Desktop\\‏‏‏‏poolProject - עותק - עותק\\Pool.Api\\Pool.Api.csproj",
+        "projectName": "Pool.Api",
+        "projectPath": "C:\\Users\\User\\Desktop\\‏‏‏‏poolProject - עותק - עותק\\Pool.Api\\Pool.Api.csproj",
         "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\User\\Desktop\\poolProject\\library\\obj\\",
+        "outputPath": "C:\\Users\\User\\Desktop\\‏‏‏‏poolProject - עותק - עותק\\Pool.Api\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "C:\\Users\\User\\Desktop\\‏‏‏‏poolProject - עותק - עותק\\Pool.Core\\Pool.Core.csproj": {
+                "projectPath": "C:\\Users\\User\\Desktop\\‏‏‏‏poolProject - עותק - עותק\\Pool.Core\\Pool.Core.csproj"
+              },
+              "C:\\Users\\User\\Desktop\\‏‏‏‏poolProject - עותק - עותק\\Pool.Service\\Pool.Service.csproj": {
+                "projectPath": "C:\\Users\\User\\Desktop\\‏‏‏‏poolProject - עותק - עותק\\Pool.Service\\Pool.Service.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[6.5.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\User\\Desktop\\‏‏‏‏poolProject - עותק - עותק\\Pool.Core\\Pool.Core.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\User\\Desktop\\‏‏‏‏poolProject - עותק - עותק\\Pool.Core\\Pool.Core.csproj",
+        "projectName": "Pool.Core",
+        "projectPath": "C:\\Users\\User\\Desktop\\‏‏‏‏poolProject - עותק - עותק\\Pool.Core\\Pool.Core.csproj",
+        "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\User\\Desktop\\‏‏‏‏poolProject - עותק - עותק\\Pool.Core\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -63,14 +138,14 @@
         }
       }
     },
-    "C:\\Users\\User\\Desktop\\poolProject\\poolProject\\poolProject.csproj": {
+    "C:\\Users\\User\\Desktop\\‏‏‏‏poolProject - עותק - עותק\\Pool.Data\\Pool.Data.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\User\\Desktop\\poolProject\\poolProject\\poolProject.csproj",
-        "projectName": "poolProject",
-        "projectPath": "C:\\Users\\User\\Desktop\\poolProject\\poolProject\\poolProject.csproj",
+        "projectUniqueName": "C:\\Users\\User\\Desktop\\‏‏‏‏poolProject - עותק - עותק\\Pool.Data\\Pool.Data.csproj",
+        "projectName": "Pool.Data",
+        "projectPath": "C:\\Users\\User\\Desktop\\‏‏‏‏poolProject - עותק - עותק\\Pool.Data\\Pool.Data.csproj",
         "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\User\\Desktop\\poolProject\\poolProject\\obj\\",
+        "outputPath": "C:\\Users\\User\\Desktop\\‏‏‏‏poolProject - עותק - עותק\\Pool.Data\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -91,8 +166,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\User\\Desktop\\poolProject\\library\\library.csproj": {
-                "projectPath": "C:\\Users\\User\\Desktop\\poolProject\\library\\library.csproj"
+              "C:\\Users\\User\\Desktop\\‏‏‏‏poolProject - עותק - עותק\\Pool.Core\\Pool.Core.csproj": {
+                "projectPath": "C:\\Users\\User\\Desktop\\‏‏‏‏poolProject - עותק - עותק\\Pool.Core\\Pool.Core.csproj"
               }
             }
           }
@@ -106,12 +181,6 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
-          "dependencies": {
-            "Swashbuckle.AspNetCore": {
-              "target": "Package",
-              "version": "[6.2.3, )"
-            }
-          },
           "imports": [
             "net461",
             "net462",
@@ -124,9 +193,6 @@
           "assetTargetFallback": true,
           "warn": true,
           "frameworkReferences": {
-            "Microsoft.AspNetCore.App": {
-              "privateAssets": "none"
-            },
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
@@ -135,14 +201,14 @@
         }
       }
     },
-    "C:\\Users\\User\\Desktop\\poolProject\\Test1\\Test1.csproj": {
+    "C:\\Users\\User\\Desktop\\‏‏‏‏poolProject - עותק - עותק\\Pool.Service\\Pool.Service.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\User\\Desktop\\poolProject\\Test1\\Test1.csproj",
-        "projectName": "Test1",
-        "projectPath": "C:\\Users\\User\\Desktop\\poolProject\\Test1\\Test1.csproj",
+        "projectUniqueName": "C:\\Users\\User\\Desktop\\‏‏‏‏poolProject - עותק - עותק\\Pool.Service\\Pool.Service.csproj",
+        "projectName": "Pool.Service",
+        "projectPath": "C:\\Users\\User\\Desktop\\‏‏‏‏poolProject - עותק - עותק\\Pool.Service\\Pool.Service.csproj",
         "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\User\\Desktop\\poolProject\\Test1\\obj\\",
+        "outputPath": "C:\\Users\\User\\Desktop\\‏‏‏‏poolProject - עותק - עותק\\Pool.Service\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -163,8 +229,83 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "C:\\Users\\User\\Desktop\\poolProject\\poolProject\\poolProject.csproj": {
-                "projectPath": "C:\\Users\\User\\Desktop\\poolProject\\poolProject\\poolProject.csproj"
+              "C:\\Users\\User\\Desktop\\‏‏‏‏poolProject - עותק - עותק\\Pool.Core\\Pool.Core.csproj": {
+                "projectPath": "C:\\Users\\User\\Desktop\\‏‏‏‏poolProject - עותק - עותק\\Pool.Core\\Pool.Core.csproj"
+              },
+              "C:\\Users\\User\\Desktop\\‏‏‏‏poolProject - עותק - עותק\\Pool.Data\\Pool.Data.csproj": {
+                "projectPath": "C:\\Users\\User\\Desktop\\‏‏‏‏poolProject - עותק - עותק\\Pool.Data\\Pool.Data.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\User\\Desktop\\‏‏‏‏poolProject - עותק - עותק\\Test1\\Test1.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\User\\Desktop\\‏‏‏‏poolProject - עותק - עותק\\Test1\\Test1.csproj",
+        "projectName": "Test1",
+        "projectPath": "C:\\Users\\User\\Desktop\\‏‏‏‏poolProject - עותק - עותק\\Test1\\Test1.csproj",
+        "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\User\\Desktop\\‏‏‏‏poolProject - עותק - עותק\\Test1\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "C:\\Users\\User\\Desktop\\‏‏‏‏poolProject - עותק - עותק\\Pool.Api\\Pool.Api.csproj": {
+                "projectPath": "C:\\Users\\User\\Desktop\\‏‏‏‏poolProject - עותק - עותק\\Pool.Api\\Pool.Api.csproj"
+              },
+              "C:\\Users\\User\\Desktop\\‏‏‏‏poolProject - עותק - עותק\\Pool.Core\\Pool.Core.csproj": {
+                "projectPath": "C:\\Users\\User\\Desktop\\‏‏‏‏poolProject - עותק - עותק\\Pool.Core\\Pool.Core.csproj"
+              },
+              "C:\\Users\\User\\Desktop\\‏‏‏‏poolProject - עותק - עותק\\Pool.Data\\Pool.Data.csproj": {
+                "projectPath": "C:\\Users\\User\\Desktop\\‏‏‏‏poolProject - עותק - עותק\\Pool.Data\\Pool.Data.csproj"
+              },
+              "C:\\Users\\User\\Desktop\\‏‏‏‏poolProject - עותק - עותק\\Pool.Service\\Pool.Service.csproj": {
+                "projectPath": "C:\\Users\\User\\Desktop\\‏‏‏‏poolProject - עותק - עותק\\Pool.Service\\Pool.Service.csproj"
               }
             }
           }

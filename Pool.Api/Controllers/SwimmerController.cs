@@ -13,59 +13,47 @@ namespace Pool.Api.Controllers
     public class SwimmerController : ControllerBase
     {
 
-        private readonly ISwimmerService _context;
-        public SwimmerController(ISwimmerService context)
+        private readonly ISwimmerService _swimmerService;
+        public SwimmerController(ISwimmerService swimmerService)
         {
-            _context = context;
+           _swimmerService = swimmerService;
         }
 
-        public static int SwimmerCount { get; set; }
         [HttpGet]
-        public IEnumerable<Swimmer> Get()
+        public ActionResult Get()
         {
-            return _context.GetALL();
+            return Ok(_swimmerService.GetAll());
         }
+
         [HttpGet("{id:int}")]
         public ActionResult Get(int id)
         {
-            Swimmer swimmer = _context.GetALL().SingleOrDefault(s => s.Id == id);
-            if (swimmer == null)
-                return NotFound("Swimmer not found");
-            return Ok(swimmer);
+            return Ok(_swimmerService.GetById(id));
         }
 
-        //[HttpGet("activity/{activityName}")]
-        //public ActionResult Get(string activityName)
-        //{
-        //    Activity act = _context.activities.FirstOrDefault(a => a.Name.Equals(activityName));
-        //    if (act == null)
-        //    {
-        //        return NotFound("not fount this activity");
-        //    }
-        //    return Ok(_context.GetALL().Where(a => a.ActivityId == act.Id).ToList());
-        //}
-
-        [HttpPost]
-        public void Post([FromBody] Swimmer s)
+        [HttpGet("{gender}")]
+        public ActionResult Get(Gender genderSwimmer)
         {
-            s.Id = ++SwimmerCount;
-            _context.GetALL().Add(s);
+            return Ok(_swimmerService.GetSwimmersByGender(genderSwimmer));
         }
+        [HttpPost]
+        public void Post([FromBody] Swimmer swimmer)
+        {
+            _swimmerService.Post(swimmer);
+        }
+
+
 
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] Swimmer s)
+        public void Put(int id, [FromBody] Swimmer swimmer)
         {
-            Swimmer swimmer = _context.GetALL().SingleOrDefault(sw => sw.Id == id);
-            swimmer.Name = s.Name;
-            swimmer.Age = s.Age;
-            swimmer.GenderSwimmer = s.GenderSwimmer;
-            swimmer.ActivityId = s.ActivityId;
+            _swimmerService.Put(id, swimmer);
         }
 
         [HttpPut("{id}/status")]
         public void Put(int id, bool status)
         {
-            _context.GetALL().SingleOrDefault(s => s.Id == id).Status = status;
+            _swimmerService.PutStatus(id, status);
         }
 
     }

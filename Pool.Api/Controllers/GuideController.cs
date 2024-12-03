@@ -3,6 +3,8 @@ using System.Reflection;
 using System;
 using Pool.Core.Services;
 using Pool.Core.models;
+using Pool.Service;
+using System.Diagnostics;
 
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -14,56 +16,49 @@ namespace Pool.Api.Controllers
     public class GuideController : ControllerBase
     {
 
-        private readonly IGuideService _context;
-        public GuideController(IGuideService context)
+        private readonly IGuideService _guideService;
+        public GuideController(IGuideService guideService)
         {
-            _context = context;
+           _guideService = guideService;
         }
-        public static int GuideCount { get; set; }
-
 
         [HttpGet]
-        public IEnumerable<Guide> Get()
+        public ActionResult Get()
         {
-            return _context.GetALL();
+            return Ok(_guideService.GetAll());
         }
 
         [HttpGet("{id:int}")]
         public ActionResult Get(int id)
         {
-            Guide guide = _context.GetALL().SingleOrDefault(g => g.Id == id);
-            if (guide == null)
-                return NotFound("Guide not found");
-            return Ok(guide);
+            return Ok(_guideService.GetById(id));
         }
 
         [HttpGet("activity/{activityName}")]
-        public ActionResult<List<Guide>> Get(string activityName)
+        public ActionResult Get(string activityName)
         {
-            return _context.GetALL().Where(g => g.ActivityName.Equals(activityName)).ToList();
+            return Ok(_guideService.GetGuidesByActivity(activityName));
         }
+
         [HttpPost]
-        public void Post([FromBody] Guide g)
+        public void Post([FromBody] Guide guide)
         {
-            g.Id = ++GuideCount;
-            _context.GetALL().Add(g);
+            _guideService.Post(guide);
         }
 
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] Guide g)
+       
+        public void Put(int id, [FromBody] Guide guide)
         {
-            Guide guide = _context.GetALL().SingleOrDefault(gu => gu.Id == id);
-            guide.Name = g.Name;
-            guide.Age = g.Age;
-            guide.GenderGuide = g.GenderGuide;
-            guide.ActivityName = g.ActivityName;
+            _guideService.Put(id, guide);
         }
 
         [HttpPut("{id}/status")]
         public void Put(int id, bool status)
         {
-            _context.GetALL().SingleOrDefault(g => g.Id == id).Status = status;
+            _guideService.PutStatus(id, status);
         }
+
     }
 }
 

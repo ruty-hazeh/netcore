@@ -3,11 +3,11 @@ namespace Pool.Core.models
 {
     public class Swimmer
     {
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public AgeRange Age { get; set; }
-        public Gender GenderSwimmer { get; set; }
-        public int ActivityId { get; set; }
-        public bool Status { get; set; } = true;
+        public int Id { get; set; }//קוד שוחה
+        public string Name { get; set; }//שם שוחה
+        public int Age { get; set; }//גיל שוחה
+        public Gender GenderSwimmer { get; set; }//זכר או נקבה
+        public int ActivityId { get; set; }//קוד פעילות
+        public bool Status { get; set; } = true;//סטטוס שוחה
     }
 }

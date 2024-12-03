@@ -14,62 +14,45 @@ namespace Pool.Api.Controllers
     public class ActivityController : ControllerBase
     {
 
-        private readonly IActivityService _context;
-        public ActivityController(IActivityService context)
+        private readonly IActivityService _activityService;
+        public ActivityController(IActivityService activityService)
         {
-            _context = context;
+           _activityService = activityService;
         }
 
-        public static int ActivityCount { get; set; }
-
         [HttpGet]
-        public IEnumerable<Activity> Get()
+        public ActionResult Get()
         {
-            return _context.GetALL();
+            return Ok(_activityService.GetAll());
         }
 
         [HttpGet("{id:int}")]
         public ActionResult Get(int id)
         {
-            Activity activity = _context.GetALL().FirstOrDefault(a => a.Id == id);
-            if (activity == null)
-                return NotFound("Activity not found");
-            return Ok(activity);
+            return Ok(_activityService.GetById(id));
         }
 
-        //[HttpGet("guide/{guideName}")]
-        //public ActionResult Get(string guideName)
-        //{
-        //    Guide gui = _context.guides.FirstOrDefault(g => g.Name.Equals(guideName));
-        //    if (gui == null)
-        //    {
-        //        return NotFound("not found this guide");
-        //    }
-        //    return Ok(_context.GetALL().Where(a => a.GuideId == gui.Id).ToList());
-        //}
-
-        [HttpPost]
-        public void Post([FromBody] Activity a)
+        [HttpGet("{byDay}")]
+        public ActionResult Get(Day activityDay)
         {
-            a.Id = ++ActivityCount;
-            _context.GetALL().Add(a);
+            return Ok(_activityService.GetActivitiesByDay(activityDay));
+        }
+        [HttpPost]
+        public void Post([FromBody] Activity activity)
+        {
+            _activityService.Post(activity);
         }
 
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] Activity a)
+        public void Put(int id, [FromBody] Activity activity)
         {
-            Activity activity = _context.GetALL().SingleOrDefault(act => act.Id == id);
-            activity.Name = a.Name;
-            activity.BeginHour = new TimeSpan(a.BeginHour.Hours, a.BeginHour.Minutes, a.BeginHour.Seconds);
-            activity.EndHour = new TimeSpan(a.EndHour.Hours, a.EndHour.Minutes, a.EndHour.Seconds);
-            activity.ActivityDay = a.ActivityDay;
-            activity.GuideId = a.GuideId;
+            _activityService.Put(id, activity);
         }
 
         [HttpPut("{id}/status")]
         public void Put(int id, bool status)
         {
-            _context.GetALL().SingleOrDefault(a => a.Id == id).Status = status;
+            _activityService.PutStatus(id, status); 
         }
 
     }

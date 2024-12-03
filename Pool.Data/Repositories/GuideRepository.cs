@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Pool.Data.Repositories
 {
-    public class GuideRepository: IGuideRepository
+    public class GuideRepository : IGuideRepository
     {
 
         private readonly DataContext _context;
@@ -17,9 +17,44 @@ namespace Pool.Data.Repositories
         {
             _context = context;
         }
-        public List<Guide> GetList()
+        public List<Guide> GetAll()
         {
             return _context.guides;
+        }
+        public Guide GetById(int id)
+        {
+            foreach (var guide in _context.guides)
+            {
+                if (guide.Id == id)
+                    return guide;
+            }
+            return null;
+        }
+        public List<Guide> GetGuidesByActivity(string activityName)
+        {
+            return _context.guides.Where(g => g.ActivityName == activityName).ToList();
+        }
+        public void Post(Guide guide)
+        {
+            _context.guides.Add(guide);
+        }
+        public void Put(int id, Guide guide)
+        {
+            Guide g = GetById(id);
+            if (g == null) return;
+            else
+            {
+                g.Name = guide.Name;
+                g.Age = guide.Age;
+                g.GenderGuide = guide.GenderGuide;
+                g.ActivityName = guide.ActivityName;
+            }
+        }
+        public void PutStatus(int id, bool status)
+        {
+            Guide g = GetById(id);
+            if (g != null)
+                g.Status = status;
         }
 
     }

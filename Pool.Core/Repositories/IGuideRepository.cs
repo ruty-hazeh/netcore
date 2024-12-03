@@ -9,6 +9,12 @@ namespace Pool.Core.Repositories
 {
     public interface IGuideRepository
     {
-        List<Guide> GetList();
+        public List<Guide> GetAll();
+        public Guide GetById(int id);
+        public List<Guide> GetGuidesByActivity(string activityName);
+        public void Post(Guide guide);
+        public void Put(int id, Guide guide);
+        public void PutStatus(int id, bool status);
+
     }
 }

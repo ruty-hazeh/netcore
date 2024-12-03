@@ -2,11 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-using library.classes_enums;
+using Pool.Api.Controllers;
 using Microsoft.AspNetCore.Mvc;
-using poolProject;
-using poolProject.Controllers;
 namespace Test1
 {
     public class SwimmerTest
