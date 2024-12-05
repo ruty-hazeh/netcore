@@ -19,7 +19,7 @@ namespace Pool.Data.Repositories
         }
         public List<Guide> GetAll()
         {
-            return _context.guides;
+            return _context.guides.ToList();
         }
         public Guide GetById(int id)
         {

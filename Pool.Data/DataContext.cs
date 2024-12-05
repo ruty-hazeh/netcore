@@ -1,13 +1,19 @@
 ﻿using Pool.Core.models;
 using Pool.Core;
+using Microsoft.EntityFrameworkCore;
 
 namespace Pool.Data
 {
-    public class DataContext : IDataContext
+    public class DataContext : DbContext
     {
-        public List<Guide> guides { get; set; } = new List<Guide>() { new Guide() { Id = 1, Name = "Chaim", Age = 32, GenderGuide = Gender.Male, ActivityName = "Free Swimming" } };
-        public List<Swimmer> swimmers { get; set; } = new List<Swimmer>() { new Swimmer() { Id = 1, Name = "Ruty", Age = 45, GenderSwimmer = Gender.Female, ActivityId = 2 } };
-        public List<Activity> activities { get; set; } = new List<Activity>() { new Activity() { Id = 1, Name = "free swimming", BeginHour = new TimeSpan(10, 0, 0), EndHour = new TimeSpan(10, 45, 0), ActivityDay = Day.Sunday, GuideId = 1 } };
+        public DbSet<Guide> guides { get; set; }
+        public DbSet<Swimmer> swimmers { get; set; }
+        public DbSet<Activity> activities { get; set; }
 
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseSqlServer("Server=(localdb)\\MSSQLLocalDB;Database=ruty_sq");
+        }
     }
 }

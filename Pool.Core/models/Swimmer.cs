@@ -5,6 +5,7 @@ namespace Pool.Core.models
     {
         public int Id { get; set; }//קוד שוחה
         public string Name { get; set; }//שם שוחה
+        public string Tz { get; set; }//תעודת זהות שוחה
         public int Age { get; set; }//גיל שוחה
         public Gender GenderSwimmer { get; set; }//זכר או נקבה
         public int ActivityId { get; set; }//קוד פעילות

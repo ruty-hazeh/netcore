@@ -26,8 +26,8 @@ builder.Services.AddScoped<ISwimmerService , SwimmerService>();
 builder.Services.AddScoped<ISwimmerRepository, SwimmerRepository>();
 
 
-
-builder.Services.AddSingleton<DataContext>();
+builder.Services.AddDbContext<DataContext>();
+//builder.Services.AddSingleton<DataContext>();
 
 
 var app = builder.Build();

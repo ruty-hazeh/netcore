@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\User\\Desktop\\‏‏‏‏poolProject - עותק - עותק\\Pool.Core\\Pool.Core.csproj",
+      "projectUniqueName": "C:\\Users\\User\\Desktop\\poolהמקורי\\Pool.Core\\Pool.Core.csproj",
       "projectName": "Pool.Core",
-      "projectPath": "C:\\Users\\User\\Desktop\\‏‏‏‏poolProject - עותק - עותק\\Pool.Core\\Pool.Core.csproj",
+      "projectPath": "C:\\Users\\User\\Desktop\\poolהמקורי\\Pool.Core\\Pool.Core.csproj",
       "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\User\\Desktop\\‏‏‏‏poolProject - עותק - עותק\\Pool.Core\\obj\\",
+      "outputPath": "C:\\Users\\User\\Desktop\\poolהמקורי\\Pool.Core\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

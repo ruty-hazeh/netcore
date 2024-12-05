@@ -18,7 +18,7 @@ namespace Pool.Data.Repositories
         }
         public List<Activity> GetAll()
         {
-            return _context.activities;
+            return _context.activities.ToList();
         }
         public Activity GetById(int id)
         {

@@ -19,7 +19,7 @@ namespace Pool.Data.Repositories
 
         public List<Swimmer> GetAll()
         {
-            return _context.swimmers;
+            return _context.swimmers.ToList();
         }
         public Swimmer GetById(int id)
         {
