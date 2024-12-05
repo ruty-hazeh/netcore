@@ -13,7 +13,7 @@ namespace Test1
         //private readonly SwimmerController _controller;
         //public SwimmerTest()
         //{
-        //    FakeContext context=new FakeContext();  
+        //    FakeContext context = new FakeContext();
         //    _controller = new SwimmerController(context);
         //}
 
@@ -27,7 +27,7 @@ namespace Test1
         //[Fact]
         //public void GetById_ReturnsOk()
         //{
-        //    var id =2;
+        //    var id = 2;
 
         //    var result = _controller.Get(id);
 

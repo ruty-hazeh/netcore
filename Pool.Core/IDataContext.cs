@@ -9,10 +9,10 @@ namespace Pool.Core
 {
     public interface IDataContext
     {
-        List<Guide> guides { get; set; }
-        List<Swimmer> swimmers { get; set; }
+        //List<Guide> guides { get; set; }
+        //List<Swimmer> swimmers { get; set; }
 
-        List<Activity> activities { get; set; }
+        //List<Activity> activities { get; set; }
 
 
     }

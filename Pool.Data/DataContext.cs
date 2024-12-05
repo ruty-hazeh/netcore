@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Pool.Data
 {
-    public class DataContext : DbContext
+    public class DataContext : DbContext,IDataContext
     {
         public DbSet<Guide> guides { get; set; }
         public DbSet<Swimmer> swimmers { get; set; }
