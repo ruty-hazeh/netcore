@@ -22,11 +22,9 @@ namespace Pool.Data.Repositories
         }
         public Activity GetById(int id)
         {
-            foreach (var activity in _context.activities)
-            {
-                if (activity.Id == id)
-                    return activity;
-            }
+            Activity a = _context.activities.SingleOrDefault(act => act.Id == id);
+            if (a != null)
+                return a;
             return null;
         }
         public List<Activity> GetActivitiesByDay(Day activityDay)
@@ -39,7 +37,7 @@ namespace Pool.Data.Repositories
         }
         public void Put(int id, Activity activity)
         {
-            Activity a = GetById(id);
+            Activity a = _context.activities.SingleOrDefault(act=> act.Id==id);
             if (a == null) return;
             else
             {
@@ -52,8 +50,8 @@ namespace Pool.Data.Repositories
         }
         public void PutStatus(int id, bool status)
         {
-            Activity a = GetById(id);
-            if(a!=null)
+            Activity a = _context.activities.SingleOrDefault(act => act.Id == id);
+            if (a!=null)
                 a.Status=status;    
         }
     }

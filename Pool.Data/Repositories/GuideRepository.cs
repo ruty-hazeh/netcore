@@ -23,11 +23,9 @@ namespace Pool.Data.Repositories
         }
         public Guide GetById(int id)
         {
-            foreach (var guide in _context.guides)
-            {
-                if (guide.Id == id)
-                    return guide;
-            }
+            Guide g = _context.guides.SingleOrDefault(gui => gui.Id == id);
+            if (g != null)
+                return g;
             return null;
         }
         public List<Guide> GetGuidesByActivity(string activityName)
@@ -40,7 +38,7 @@ namespace Pool.Data.Repositories
         }
         public void Put(int id, Guide guide)
         {
-            Guide g = GetById(id);
+            Guide g = _context.guides.SingleOrDefault(gui => gui.Id == id);
             if (g == null) return;
             else
             {
@@ -52,7 +50,7 @@ namespace Pool.Data.Repositories
         }
         public void PutStatus(int id, bool status)
         {
-            Guide g = GetById(id);
+            Guide g = _context.guides.SingleOrDefault(gui => gui.Id == id);
             if (g != null)
                 g.Status = status;
         }

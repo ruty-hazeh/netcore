@@ -23,11 +23,9 @@ namespace Pool.Data.Repositories
         }
         public Swimmer GetById(int id)
         {
-            foreach (var swimmer in _context.swimmers)
-            {
-                if (swimmer.Id == id)
-                    return swimmer;
-            }
+            Swimmer s = _context.swimmers.SingleOrDefault(swi => swi.Id == id);
+            if (s != null)
+                return s;
             return null;
         }
         public List<Swimmer> GetSwimmersByGender(Gender genderSwimmer)
@@ -40,7 +38,7 @@ namespace Pool.Data.Repositories
         }
         public void Put(int id, Swimmer swimmer)
         {
-            Swimmer s = GetById(id);
+            Swimmer s = _context.swimmers.SingleOrDefault(swi => swi.Id == id);
             if (s == null) return;
             else
             {
@@ -52,7 +50,7 @@ namespace Pool.Data.Repositories
         }
         public void PutStatus(int id, bool status)
         {
-            Swimmer s = GetById(id);
+            Swimmer s = _context.swimmers.SingleOrDefault(swi => swi.Id == id);
             if (s != null)
                 s.Status = status;
         }

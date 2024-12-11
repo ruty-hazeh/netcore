@@ -12,7 +12,7 @@ namespace Pool.Service
 {
     public class GuideService : IGuideService
     {
-        private static int GuideCount = 2;
+        //private static int GuideCount = 0;
 
         private readonly IGuideRepository _guideRepository;
         public GuideService(IGuideRepository guideRepository)
@@ -35,7 +35,7 @@ namespace Pool.Service
         }
         public void Post(Guide guide)
         {
-            guide.Id = ++GuideCount;
+            //guide.Id = ++GuideCount;
             _guideRepository.Post(guide);
         }
         public void Put(int id, Guide guide)

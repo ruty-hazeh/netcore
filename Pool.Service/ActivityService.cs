@@ -12,7 +12,7 @@ namespace Pool.Service
 {
     public class ActivityService:IActivityService
     {
-        private static int ActivityCount = 2;
+        //private static int ActivityCount = 0;
 
         private readonly IActivityRepository _activityRepository;
         public ActivityService(IActivityRepository activityRepository)
@@ -34,7 +34,7 @@ namespace Pool.Service
         }
         public void Post(Activity activity)
         { 
-            activity.Id = ++ActivityCount;
+            //activity.Id = ++ActivityCount;
             _activityRepository.Post(activity);
         }
         public void Put(int id, Activity activity)

@@ -13,7 +13,7 @@ namespace Pool.Service
 {
     public class SwimmerService: ISwimmerService
     {
-        private static int SwimmerCount = 2;
+        //private static int SwimmerCount = 0;
 
         private readonly ISwimmerRepository _swimmerRepository;
         public SwimmerService(ISwimmerRepository swimmerRepository)
@@ -35,7 +35,7 @@ namespace Pool.Service
         }
         public void Post(Swimmer swimmer)
         {
-            swimmer.Id = ++SwimmerCount;
+            //swimmer.Id = ++SwimmerCount;
             _swimmerRepository.Post(swimmer);
         }
         public void Put(int id, Swimmer swimmer)
