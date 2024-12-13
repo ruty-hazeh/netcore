@@ -13,38 +13,45 @@ namespace Pool.Service
 {
     public class SwimmerService: ISwimmerService
     {
-        //private static int SwimmerCount = 0;
 
-        private readonly ISwimmerRepository _swimmerRepository;
-        public SwimmerService(ISwimmerRepository swimmerRepository)
+        //private readonly ISwimmerRepository _swimmerRepository;
+        private readonly IRepositoryManager _repositoryManager;
+
+        public SwimmerService(ISwimmerRepository swimmerRepository, IRepositoryManager repositoryManager)
         {
-            _swimmerRepository = swimmerRepository;
+            //_swimmerRepository = swimmerRepository;
+            _repositoryManager = repositoryManager;
         }
 
         public List<Swimmer> GetAll()
         {
-            return _swimmerRepository.GetAll();
+            return _repositoryManager.Swimmers.GetAll();
         }
         public Swimmer GetById(int id)
         {
-            return _swimmerRepository.GetById(id);
+            return _repositoryManager.Swimmers.GetById(id);
         }
         public List<Swimmer> GetSwimmersByGender(Gender genderSwimmer)
         {
-            return _swimmerRepository.GetSwimmersByGender(genderSwimmer);
+            return _repositoryManager.Swimmers.GetSwimmersByGender(genderSwimmer);
         }
         public void Post(Swimmer swimmer)
         {
             //swimmer.Id = ++SwimmerCount;
-            _swimmerRepository.Post(swimmer);
+            _repositoryManager.Swimmers.Post(swimmer);
+            _repositoryManager.Save();
         }
         public void Put(int id, Swimmer swimmer)
         {
-            _swimmerRepository.Put(id, swimmer);
+            _repositoryManager.Swimmers.Put(id, swimmer);
+            _repositoryManager.Save();
+
         }
         public void PutStatus(int id, bool status)
         {
-            _swimmerRepository.PutStatus(id, status);
+            _repositoryManager.Swimmers.PutStatus(id, status);
+            _repositoryManager.Save();
+
         }
 
     }

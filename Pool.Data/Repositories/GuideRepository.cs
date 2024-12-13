@@ -1,4 +1,5 @@
-﻿using Pool.Core.models;
+﻿using Microsoft.EntityFrameworkCore;
+using Pool.Core.models;
 using Pool.Core.Repositories;
 using System;
 using System.Collections.Generic;
@@ -19,7 +20,7 @@ namespace Pool.Data.Repositories
         }
         public List<Guide> GetAll()
         {
-            return _context.guides.ToList();
+            return _context.guides.Include(g=>g.GuideActivities).ToList();
         }
         public Guide GetById(int id)
         {
@@ -28,13 +29,18 @@ namespace Pool.Data.Repositories
                 return g;
             return null;
         }
-        public List<Guide> GetGuidesByActivity(string activityName)
+        public List<Activity> GetGuideActivities(string name)
         {
-            return _context.guides.Where(g => g.ActivityName == activityName).ToList();
+            Guide g = _context.guides.SingleOrDefault(gui => gui.Name == name);
+            if (g != null)
+                return g.GuideActivities;
+            return null;
+
         }
         public void Post(Guide guide)
         {
             _context.guides.Add(guide);
+
         }
         public void Put(int id, Guide guide)
         {
@@ -45,8 +51,9 @@ namespace Pool.Data.Repositories
                 g.Name = guide.Name;
                 g.Age = guide.Age;
                 g.GenderGuide = guide.GenderGuide;
-                g.ActivityName = guide.ActivityName;
+                g.GuideActivities = guide.GuideActivities;
             }
+
         }
         public void PutStatus(int id, bool status)
         {

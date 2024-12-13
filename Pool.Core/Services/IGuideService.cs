@@ -12,7 +12,7 @@ namespace Pool.Core.Services
 
         public List<Guide> GetAll();
         public Guide GetById(int id);
-        public List<Guide> GetGuidesByActivity(string activityName);
+        public List<Activity> GetGuideActivities(string name);
         public void Post(Guide guide);
         public void Put(int id, Guide guide);
         public void PutStatus(int id, bool status);

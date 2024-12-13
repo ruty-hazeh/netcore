@@ -22,6 +22,21 @@ namespace Pool.Data.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
+            modelBuilder.Entity("ActivitySwimmer", b =>
+                {
+                    b.Property<int>("ActivitySwimmersId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SwimmerActivitiesId")
+                        .HasColumnType("int");
+
+                    b.HasKey("ActivitySwimmersId", "SwimmerActivitiesId");
+
+                    b.HasIndex("SwimmerActivitiesId");
+
+                    b.ToTable("ActivitySwimmer");
+                });
+
             modelBuilder.Entity("Pool.Core.models.Activity", b =>
                 {
                     b.Property<int>("Id")
@@ -51,6 +66,8 @@ namespace Pool.Data.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("GuideId");
+
                     b.ToTable("activities");
                 });
 
@@ -61,10 +78,6 @@ namespace Pool.Data.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<string>("ActivityName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Age")
                         .HasColumnType("int");
@@ -96,9 +109,6 @@ namespace Pool.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<int>("ActivityId")
-                        .HasColumnType("int");
-
                     b.Property<int>("Age")
                         .HasColumnType("int");
 
@@ -119,6 +129,37 @@ namespace Pool.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("swimmers");
+                });
+
+            modelBuilder.Entity("ActivitySwimmer", b =>
+                {
+                    b.HasOne("Pool.Core.models.Swimmer", null)
+                        .WithMany()
+                        .HasForeignKey("ActivitySwimmersId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Pool.Core.models.Activity", null)
+                        .WithMany()
+                        .HasForeignKey("SwimmerActivitiesId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Pool.Core.models.Activity", b =>
+                {
+                    b.HasOne("Pool.Core.models.Guide", "Guide")
+                        .WithMany("GuideActivities")
+                        .HasForeignKey("GuideId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Guide");
+                });
+
+            modelBuilder.Entity("Pool.Core.models.Guide", b =>
+                {
+                    b.Navigation("GuideActivities");
                 });
 #pragma warning restore 612, 618
         }

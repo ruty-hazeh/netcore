@@ -1,4 +1,5 @@
-﻿using Pool.Core.models;
+﻿using Microsoft.EntityFrameworkCore;
+using Pool.Core.models;
 using Pool.Core.Repositories;
 using System;
 using System.Collections.Generic;
@@ -19,7 +20,7 @@ namespace Pool.Data.Repositories
 
         public List<Swimmer> GetAll()
         {
-            return _context.swimmers.ToList();
+            return _context.swimmers.Include(s=>s.SwimmerActivities).ToList();
         }
         public Swimmer GetById(int id)
         {
@@ -35,6 +36,7 @@ namespace Pool.Data.Repositories
         public void Post(Swimmer swimmer)
         {
             _context.swimmers.Add(swimmer);
+
         }
         public void Put(int id, Swimmer swimmer)
         {
@@ -45,14 +47,16 @@ namespace Pool.Data.Repositories
                 s.Name = swimmer.Name;
                 s.Age = swimmer.Age;
                 s.GenderSwimmer = swimmer.GenderSwimmer;
-                s.ActivityId = swimmer.ActivityId;
+                s.SwimmerActivities = swimmer.SwimmerActivities;
             }
+
         }
         public void PutStatus(int id, bool status)
         {
             Swimmer s = _context.swimmers.SingleOrDefault(swi => swi.Id == id);
             if (s != null)
                 s.Status = status;
+
         }
     }
 }

@@ -12,38 +12,51 @@ namespace Pool.Service
 {
     public class ActivityService:IActivityService
     {
-        //private static int ActivityCount = 0;
 
-        private readonly IActivityRepository _activityRepository;
-        public ActivityService(IActivityRepository activityRepository)
+        //private readonly IActivityRepository _activityRepository;
+        private readonly IRepositoryManager _repositoryManager;
+
+        public ActivityService(IActivityRepository activityRepository, IRepositoryManager repositoryManager)
         {
-            _activityRepository = activityRepository;   
+            //_activityRepository = activityRepository;   
+            _repositoryManager = repositoryManager;
         }
 
         public List<Activity> GetAll()
         {
-            return _activityRepository.GetAll();
+            return _repositoryManager.Activities.GetAll();
         }
         public Activity GetById(int id)
         {
-            return _activityRepository.GetById(id);
+            return _repositoryManager.Activities.GetById(id);
+            
         }
         public List<Activity> GetActivitiesByDay(Day activityDay)
         {
-            return _activityRepository.GetActivitiesByDay(activityDay);
+            return _repositoryManager.Activities.GetActivitiesByDay(activityDay);
         }
         public void Post(Activity activity)
         { 
             //activity.Id = ++ActivityCount;
-            _activityRepository.Post(activity);
+            _repositoryManager.Activities.Post(activity);
+            _repositoryManager.Save();
         }
         public void Put(int id, Activity activity)
         {
-            _activityRepository.Put(id, activity);
+            _repositoryManager.Activities.Put(id, activity);
+            _repositoryManager.Save(); 
         }
         public void PutStatus(int id, bool status)
         {
-            _activityRepository.PutStatus(id, status);
+            _repositoryManager.Activities.PutStatus(id, status);
+            _repositoryManager.Save();
+
+        }
+        public void Delete(int id)
+        {
+            _repositoryManager.Activities.Delete(id);
+            _repositoryManager.Save();
+
         }
 
 

@@ -16,6 +16,7 @@ namespace Pool.Core.Repositories
         public void Post(Activity activity);
         public void Put(int id, Activity activity);
         public void PutStatus(int id, bool status);
+        public void Delete(int id);
 
     }
 }

@@ -14,6 +14,7 @@ namespace Pool.Data
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer("Server=(localdb)\\MSSQLLocalDB;Database=ruty_sq");
+
         }
     }
 }

@@ -31,7 +31,7 @@ namespace Pool.Api.Controllers
             return Ok(_swimmerService.GetById(id));
         }
 
-        [HttpGet("{gender}")]
+        [HttpGet("{genderSwimmer}")]
         public ActionResult Get(Gender genderSwimmer)
         {
             return Ok(_swimmerService.GetSwimmersByGender(genderSwimmer));
@@ -41,8 +41,6 @@ namespace Pool.Api.Controllers
         {
             _swimmerService.Post(swimmer);
         }
-
-
 
         [HttpPut("{id}")]
         public void Put(int id, [FromBody] Swimmer swimmer)

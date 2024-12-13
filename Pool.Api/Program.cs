@@ -4,6 +4,7 @@ using Pool.Core.Services;
 using Pool.Data;
 using Pool.Data.Repositories;
 using Pool.Service;
+using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,7 +15,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-
+builder.Services.AddScoped<IRepositoryManager, RepositoryManager>();
 
 builder.Services.AddScoped<IActivityService ,ActivityService>();
 builder.Services.AddScoped<IActivityRepository, ActivityRepository>();
@@ -28,7 +29,13 @@ builder.Services.AddScoped<ISwimmerRepository, SwimmerRepository>();
 
 builder.Services.AddDbContext<DataContext>();
 //builder.Services.AddSingleton<DataContext>();
+builder.Services.AddControllers();
 
+builder.Services.AddControllers().AddJsonOptions(options =>
+{
+    options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
+    options.JsonSerializerOptions.WriteIndented = true;
+});
 
 var app = builder.Build();
 

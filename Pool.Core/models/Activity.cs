@@ -7,8 +7,10 @@
         public TimeSpan BeginHour { get; set; }//שעת התחלה
         public TimeSpan EndHour { get; set; }//שעת סיום
         public Day ActivityDay { get; set; }//יום הפעילות
-        public int GuideId { get; set; }//קוד מדריך
         public bool Status { get; set; } = true;//סטטוס פעילות
+        public Guide Guide { get; set; }// מדריך של הפעילות
+        public List<Swimmer> ActivitySwimmers { get; set; }//רשימת שוחים של הפעילות
+
 
     }
 }

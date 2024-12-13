@@ -32,7 +32,7 @@ namespace Pool.Api.Controllers
             return Ok(_activityService.GetById(id));
         }
 
-        [HttpGet("{byDay}")]
+        [HttpGet("{activityDay}")]
         public ActionResult Get(Day activityDay)
         {
             return Ok(_activityService.GetActivitiesByDay(activityDay));
@@ -54,6 +54,10 @@ namespace Pool.Api.Controllers
         {
             _activityService.PutStatus(id, status); 
         }
-
+        [HttpDelete]
+        public void Delete(int id)
+        {
+            _activityService.Delete(id);
+        }
     }
 }

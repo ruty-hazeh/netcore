@@ -5,6 +5,7 @@ using Pool.Core.Services;
 using Pool.Core.models;
 using Pool.Service;
 using System.Diagnostics;
+using System.Xml.Linq;
 
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -34,10 +35,10 @@ namespace Pool.Api.Controllers
             return Ok(_guideService.GetById(id));
         }
 
-        [HttpGet("activity/{activityName}")]
-        public ActionResult Get(string activityName)
+        [HttpGet("guide/{name}/activities")]
+        public ActionResult Get(string name)
         {
-            return Ok(_guideService.GetGuidesByActivity(activityName));
+            return Ok(_guideService.GetGuideActivities(name));
         }
 
         [HttpPost]

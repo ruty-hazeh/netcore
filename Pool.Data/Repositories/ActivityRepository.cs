@@ -1,4 +1,5 @@
-﻿using Pool.Core.models;
+﻿using Microsoft.EntityFrameworkCore;
+using Pool.Core.models;
 using Pool.Core.Repositories;
 using System;
 using System.Collections.Generic;
@@ -18,7 +19,7 @@ namespace Pool.Data.Repositories
         }
         public List<Activity> GetAll()
         {
-            return _context.activities.ToList();
+            return _context.activities.Include(a=>a.Guide).Include(ac=>ac.ActivitySwimmers).ToList();
         }
         public Activity GetById(int id)
         {
@@ -34,6 +35,7 @@ namespace Pool.Data.Repositories
         public void Post(Activity activity)
         {
             _context.activities.Add(activity);
+
         }
         public void Put(int id, Activity activity)
         {
@@ -45,14 +47,23 @@ namespace Pool.Data.Repositories
                 a.BeginHour = new TimeSpan(activity.BeginHour.Hours, activity.BeginHour.Minutes, activity.BeginHour.Seconds);
                 a.EndHour = new TimeSpan(activity.EndHour.Hours, activity.EndHour.Minutes, activity.EndHour.Seconds);
                 a.ActivityDay = activity.ActivityDay;
-                a.GuideId = activity.GuideId;
+                a.Guide = activity.Guide;
+                a.ActivitySwimmers=activity.ActivitySwimmers;
             }
+
         }
         public void PutStatus(int id, bool status)
         {
             Activity a = _context.activities.SingleOrDefault(act => act.Id == id);
             if (a!=null)
-                a.Status=status;    
+                a.Status=status;
         }
+        public void Delete(int id)
+        {
+            Activity a = _context.activities.SingleOrDefault(act => act.Id == id);
+            if(a!=null)
+                _context.activities.Remove(a);
+        }
+
     }
 }

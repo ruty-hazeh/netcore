@@ -12,39 +12,46 @@ namespace Pool.Service
 {
     public class GuideService : IGuideService
     {
-        //private static int GuideCount = 0;
 
-        private readonly IGuideRepository _guideRepository;
-        public GuideService(IGuideRepository guideRepository)
+        //private readonly IGuideRepository _guideRepository;
+        private readonly IRepositoryManager _repositoryManager;
+
+        public GuideService(IGuideRepository guideRepository, IRepositoryManager repositoryManager)
         {
-            _guideRepository = guideRepository;
+            //_guideRepository = guideRepository;
+            _repositoryManager = repositoryManager;
         }
 
         public List<Guide> GetAll()
         {
-            return _guideRepository.GetAll();
+            return _repositoryManager.Guides.GetAll();
         }
 
         public Guide GetById(int id)
         {
-            return _guideRepository.GetById(id);
+            return _repositoryManager.Guides.GetById(id);
         }
-        public List<Guide> GetGuidesByActivity(string activityName)
+        public List<Activity> GetGuideActivities(string name)
         {
-            return _guideRepository.GetGuidesByActivity(activityName);
+            return _repositoryManager.Guides.GetGuideActivities(name);
         }
         public void Post(Guide guide)
         {
             //guide.Id = ++GuideCount;
-            _guideRepository.Post(guide);
+            _repositoryManager.Guides.Post(guide);
+            _repositoryManager.Save();
         }
         public void Put(int id, Guide guide)
         {
-            _guideRepository.Put(id, guide);
+            _repositoryManager.Guides.Put(id, guide);
+            _repositoryManager.Save();
+
         }
         public void PutStatus(int id, bool status)
         {
-            _guideRepository.PutStatus(id, status);
+            _repositoryManager.Guides.PutStatus(id, status);
+            _repositoryManager.Save();
+
         }
 
     }
