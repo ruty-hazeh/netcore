@@ -7,19 +7,22 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Pool.Core.Services;
+using AutoMapper;
+using Pool.Core.Dtos;
 
 namespace Pool.Service
 {
-    public class ActivityService:IActivityService
+    public class ActivityService : IActivityService
     {
 
-        //private readonly IActivityRepository _activityRepository;
         private readonly IRepositoryManager _repositoryManager;
+        private readonly IMapper _mapper;
 
-        public ActivityService(IActivityRepository activityRepository, IRepositoryManager repositoryManager)
+
+        public ActivityService(IRepositoryManager repositoryManager, IMapper mapper)
         {
-            //_activityRepository = activityRepository;   
             _repositoryManager = repositoryManager;
+            _mapper = mapper;
         }
 
         public List<Activity> GetAll()
@@ -29,28 +32,31 @@ namespace Pool.Service
         public Activity GetById(int id)
         {
             return _repositoryManager.Activities.GetById(id);
-            
+
         }
         public List<Activity> GetActivitiesByDay(Day activityDay)
         {
             return _repositoryManager.Activities.GetActivitiesByDay(activityDay);
         }
-        public void Post(Activity activity)
-        { 
-            //activity.Id = ++ActivityCount;
-            _repositoryManager.Activities.Post(activity);
-            _repositoryManager.Save();
-        }
-        public void Put(int id, Activity activity)
+        public Activity Post(ActivityPostDTO activity)
         {
-            _repositoryManager.Activities.Put(id, activity);
-            _repositoryManager.Save(); 
-        }
-        public void PutStatus(int id, bool status)
-        {
-            _repositoryManager.Activities.PutStatus(id, status);
+            var activityMap = _mapper.Map<Activity>(activity);
+            var res = _repositoryManager.Activities.Post(activityMap);
             _repositoryManager.Save();
-
+            return res;
+        }
+        public Activity Put(int id, ActivityPutDTO activity)
+        {
+            var activityMap = _mapper.Map<Activity>(activity);
+            var res = _repositoryManager.Activities.Put(id, activityMap);
+            _repositoryManager.Save();
+            return res;
+        }
+        public Activity PutStatus(int id, bool status)
+        {
+            var res = _repositoryManager.Activities.PutStatus(id, status);
+            _repositoryManager.Save();
+            return res;
         }
         public void Delete(int id)
         {

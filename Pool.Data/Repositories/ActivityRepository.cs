@@ -32,15 +32,15 @@ namespace Pool.Data.Repositories
         {
             return _context.activities.Where(a => a.ActivityDay == activityDay).ToList();
         }
-        public void Post(Activity activity)
+        public Activity Post(Activity activity)
         {
-            _context.activities.Add(activity);
-
+           _context.activities.Add(activity);
+            return activity;
         }
-        public void Put(int id, Activity activity)
+        public Activity Put(int id, Activity activity)
         {
             Activity a = _context.activities.SingleOrDefault(act=> act.Id==id);
-            if (a == null) return;
+            if (a == null) return null;
             else
             {
                 a.Name = activity.Name;
@@ -50,13 +50,14 @@ namespace Pool.Data.Repositories
                 a.Guide = activity.Guide;
                 a.ActivitySwimmers=activity.ActivitySwimmers;
             }
-
+            return a;
         }
-        public void PutStatus(int id, bool status)
+        public Activity PutStatus(int id, bool status)
         {
             Activity a = _context.activities.SingleOrDefault(act => act.Id == id);
             if (a!=null)
                 a.Status=status;
+            return a;
         }
         public void Delete(int id)
         {

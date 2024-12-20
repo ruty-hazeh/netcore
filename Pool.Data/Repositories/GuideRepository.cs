@@ -20,7 +20,7 @@ namespace Pool.Data.Repositories
         }
         public List<Guide> GetAll()
         {
-            return _context.guides.Include(g=>g.GuideActivities).ToList();
+            return _context.guides.Include(g => g.GuideActivities).ToList();
         }
         public Guide GetById(int id)
         {
@@ -37,15 +37,15 @@ namespace Pool.Data.Repositories
             return null;
 
         }
-        public void Post(Guide guide)
+        public Guide Post(Guide guide)
         {
             _context.guides.Add(guide);
-
+            return guide;
         }
-        public void Put(int id, Guide guide)
+        public Guide Put(int id, Guide guide)
         {
             Guide g = _context.guides.SingleOrDefault(gui => gui.Id == id);
-            if (g == null) return;
+            if (g == null) return null;
             else
             {
                 g.Name = guide.Name;
@@ -53,13 +53,14 @@ namespace Pool.Data.Repositories
                 g.GenderGuide = guide.GenderGuide;
                 g.GuideActivities = guide.GuideActivities;
             }
-
+            return g;
         }
-        public void PutStatus(int id, bool status)
+        public Guide PutStatus(int id, bool status)
         {
             Guide g = _context.guides.SingleOrDefault(gui => gui.Id == id);
             if (g != null)
                 g.Status = status;
+            return g;
         }
 
     }

@@ -20,7 +20,7 @@ namespace Pool.Data.Repositories
 
         public List<Swimmer> GetAll()
         {
-            return _context.swimmers.Include(s=>s.SwimmerActivities).ToList();
+            return _context.swimmers.Include(s => s.SwimmerActivities).ToList();
         }
         public Swimmer GetById(int id)
         {
@@ -33,15 +33,15 @@ namespace Pool.Data.Repositories
         {
             return _context.swimmers.Where(s => s.GenderSwimmer == genderSwimmer).ToList();
         }
-        public void Post(Swimmer swimmer)
+        public Swimmer Post(Swimmer swimmer)
         {
             _context.swimmers.Add(swimmer);
-
+            return swimmer;
         }
-        public void Put(int id, Swimmer swimmer)
+        public Swimmer Put(int id, Swimmer swimmer)
         {
             Swimmer s = _context.swimmers.SingleOrDefault(swi => swi.Id == id);
-            if (s == null) return;
+            if (s == null) return null;
             else
             {
                 s.Name = swimmer.Name;
@@ -49,14 +49,14 @@ namespace Pool.Data.Repositories
                 s.GenderSwimmer = swimmer.GenderSwimmer;
                 s.SwimmerActivities = swimmer.SwimmerActivities;
             }
-
+            return s;
         }
-        public void PutStatus(int id, bool status)
+        public Swimmer PutStatus(int id, bool status)
         {
             Swimmer s = _context.swimmers.SingleOrDefault(swi => swi.Id == id);
             if (s != null)
                 s.Status = status;
-
+            return s;
         }
     }
 }

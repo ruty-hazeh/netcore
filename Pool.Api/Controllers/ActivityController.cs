@@ -4,6 +4,8 @@ using Pool.Core;
 using Pool.Core.models;
 using Pool.Service;
 using Pool.Core.Services;
+using AutoMapper;
+using Pool.Core.Dtos;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -15,9 +17,10 @@ namespace Pool.Api.Controllers
     {
 
         private readonly IActivityService _activityService;
+
         public ActivityController(IActivityService activityService)
         {
-           _activityService = activityService;
+            _activityService = activityService;
         }
 
         [HttpGet]
@@ -38,21 +41,34 @@ namespace Pool.Api.Controllers
             return Ok(_activityService.GetActivitiesByDay(activityDay));
         }
         [HttpPost]
-        public void Post([FromBody] Activity activity)
+        public ActionResult Post([FromBody] ActivityPostDTO activity)
         {
-            _activityService.Post(activity);
+            Activity newActivity=_activityService.Post(activity);
+           return Ok(newActivity);
         }
 
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] Activity activity)
+        public ActionResult Put(int id, [FromBody] ActivityPutDTO activity)
         {
-            _activityService.Put(id, activity);
+
+            Activity updateActivity = _activityService.Put(id, activity);
+            if (updateActivity == null)
+            {
+                return NotFound(); 
+            }
+            return Ok(updateActivity);
+
         }
 
         [HttpPut("{id}/status")]
-        public void Put(int id, bool status)
+        public ActionResult Put(int id, bool status)
         {
-            _activityService.PutStatus(id, status); 
+           Activity updateActivity= _activityService.PutStatus(id, status);
+            if (updateActivity == null)
+            {
+                return NotFound();  
+            }
+            return Ok(updateActivity);
         }
         [HttpDelete]
         public void Delete(int id)

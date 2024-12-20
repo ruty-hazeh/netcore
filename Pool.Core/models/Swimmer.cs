@@ -8,9 +8,6 @@ namespace Pool.Core.models
         public string Tz { get; set; }//תעודת זהות שוחה
         public int Age { get; set; }//גיל שוחה
         public Gender GenderSwimmer { get; set; }//זכר או נקבה
-
-        //public int ActivityId { get; set; }//קוד פעילות
-
         public bool Status { get; set; } = true;//סטטוס שוחה
         public List<Activity> SwimmerActivities { get; set; }//רשימת פעיליות לשוחה
     }

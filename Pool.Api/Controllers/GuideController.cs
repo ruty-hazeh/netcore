@@ -6,6 +6,7 @@ using Pool.Core.models;
 using Pool.Service;
 using System.Diagnostics;
 using System.Xml.Linq;
+using Pool.Core.Dtos;
 
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -42,22 +43,35 @@ namespace Pool.Api.Controllers
         }
 
         [HttpPost]
-        public void Post([FromBody] Guide guide)
+        public ActionResult Post([FromBody] GuidePostDTO guide)
         {
-            _guideService.Post(guide);
+           Guide newGuide= _guideService.Post(guide);
+            return Ok(newGuide);
         }
+
 
         [HttpPut("{id}")]
        
-        public void Put(int id, [FromBody] Guide guide)
+        public ActionResult Put(int id, [FromBody] GuidePutDTO guide)
         {
-            _guideService.Put(id, guide);
+           Guide updateGuide= _guideService.Put(id, guide);
+            if (updateGuide == null)
+            {
+                return NotFound();
+            }
+            return Ok(updateGuide);
         }
 
+
         [HttpPut("{id}/status")]
-        public void Put(int id, bool status)
+        public ActionResult Put(int id, bool status)
         {
-            _guideService.PutStatus(id, status);
+           Guide updateGuide=_guideService.PutStatus(id, status);
+            if (updateGuide == null)
+            {
+                return NotFound();
+            }
+            return Ok(updateGuide);
         }
 
     }

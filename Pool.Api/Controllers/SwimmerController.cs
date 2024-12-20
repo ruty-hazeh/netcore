@@ -4,6 +4,8 @@ using Pool.Core;
 using Pool.Core.models;
 using Pool.Service;
 using Pool.Core.Services;
+using Pool.Core.Dtos;
+using System.Diagnostics;
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace Pool.Api.Controllers
@@ -37,21 +39,32 @@ namespace Pool.Api.Controllers
             return Ok(_swimmerService.GetSwimmersByGender(genderSwimmer));
         }
         [HttpPost]
-        public void Post([FromBody] Swimmer swimmer)
+        public ActionResult Post([FromBody] SwimmerPostDTO swimmer)
         {
-            _swimmerService.Post(swimmer);
+           Swimmer newSwimmer= _swimmerService.Post(swimmer);
+            return Ok(newSwimmer);
         }
-
+       
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] Swimmer swimmer)
+        public ActionResult Put(int id, [FromBody] SwimmerPutDTO swimmer)
         {
-            _swimmerService.Put(id, swimmer);
+            Swimmer updateSwimmer=_swimmerService.Put(id, swimmer);
+            if (updateSwimmer == null)
+            {
+                return NotFound();
+            }
+            return Ok(updateSwimmer);
         }
-
-        [HttpPut("{id}/status")]
-        public void Put(int id, bool status)
+            
+    [HttpPut("{id}/status")]
+        public ActionResult Put(int id, bool status)
         {
-            _swimmerService.PutStatus(id, status);
+            Swimmer updateSwimmer = _swimmerService.PutStatus(id, status);
+            if (updateSwimmer == null)
+            {
+                return NotFound();
+            }
+            return Ok(updateSwimmer);
         }
 
     }

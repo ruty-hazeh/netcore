@@ -13,9 +13,9 @@ namespace Pool.Core.Repositories
         public Activity GetById(int id);
         public List<Activity> GetActivitiesByDay(Day activityDay);
 
-        public void Post(Activity activity);
-        public void Put(int id, Activity activity);
-        public void PutStatus(int id, bool status);
+        public Activity Post(Activity activity);
+        public Activity Put(int id, Activity activity);
+        public Activity PutStatus(int id, bool status);
         public void Delete(int id);
 
     }

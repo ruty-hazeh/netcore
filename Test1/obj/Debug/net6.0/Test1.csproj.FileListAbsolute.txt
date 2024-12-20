@@ -270,3 +270,4 @@ C:\Users\User\Desktop\poolהמקורי\Test1\bin\Debug\net6.0\Pool.Service.pdb
 C:\Users\User\Desktop\poolהמקורי\Test1\obj\Debug\net6.0\Test1.csproj.CopyComplete
 C:\Users\User\Desktop\poolהמקורי\Test1\obj\Debug\net6.0\Test1.genruntimeconfig.cache
 C:\Users\User\Desktop\poolהמקורי\Test1\obj\Debug\net6.0\ref\Test1.dll
+C:\Users\User\Desktop\poolהמקורי\Test1\bin\Debug\net6.0\AutoMapper.dll

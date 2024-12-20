@@ -7,19 +7,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Pool.Core.Services;
+using AutoMapper;
+using Pool.Core.Dtos;
 
 namespace Pool.Service
 {
     public class GuideService : IGuideService
     {
 
-        //private readonly IGuideRepository _guideRepository;
         private readonly IRepositoryManager _repositoryManager;
+        private readonly IMapper _mapper;
 
-        public GuideService(IGuideRepository guideRepository, IRepositoryManager repositoryManager)
+        public GuideService(IRepositoryManager repositoryManager, IMapper mapper)
         {
-            //_guideRepository = guideRepository;
             _repositoryManager = repositoryManager;
+            _mapper = mapper;
         }
 
         public List<Guide> GetAll()
@@ -35,22 +37,30 @@ namespace Pool.Service
         {
             return _repositoryManager.Guides.GetGuideActivities(name);
         }
-        public void Post(Guide guide)
+        public Guide Post(GuidePostDTO guide)
         {
-            //guide.Id = ++GuideCount;
-            _repositoryManager.Guides.Post(guide);
+            var guideMap = _mapper.Map<Guide>(guide);
+            var res = _repositoryManager.Guides.Post(guideMap);
             _repositoryManager.Save();
+            return res;
         }
-        public void Put(int id, Guide guide)
+
+        public Guide Put(int id, GuidePutDTO guide)
         {
-            _repositoryManager.Guides.Put(id, guide);
+            var guideMap = _mapper.Map<Guide>(guide);
+
+            var res = _repositoryManager.Guides.Put(id, guideMap);
             _repositoryManager.Save();
+            return res;
 
         }
-        public void PutStatus(int id, bool status)
+
+
+        public Guide PutStatus(int id, bool status)
         {
-            _repositoryManager.Guides.PutStatus(id, status);
+            var res = _repositoryManager.Guides.PutStatus(id, status);
             _repositoryManager.Save();
+            return res;
 
         }
 

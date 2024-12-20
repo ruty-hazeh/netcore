@@ -12,9 +12,9 @@ namespace Pool.Core.Repositories
         public List<Swimmer> GetAll();
         public Swimmer GetById(int id);
         public List<Swimmer> GetSwimmersByGender(Gender genderSwimmer);
-        public void Post(Swimmer swimmer);
-        public void Put(int id, Swimmer swimmer);
-        public void PutStatus(int id, bool status);
+        public Swimmer Post(Swimmer swimmer);
+        public Swimmer Put(int id, Swimmer swimmer);
+        public Swimmer PutStatus(int id, bool status);
 
     }
 }

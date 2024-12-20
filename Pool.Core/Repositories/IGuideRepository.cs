@@ -12,9 +12,9 @@ namespace Pool.Core.Repositories
         public List<Guide> GetAll();
         public Guide GetById(int id);
         public List<Activity> GetGuideActivities(string name);
-        public void Post(Guide guide);
-        public void Put(int id, Guide guide);
-        public void PutStatus(int id, bool status);
+        public Guide Post(Guide guide);
+        public Guide Put(int id, Guide guide);
+        public Guide PutStatus(int id, bool status);
 
     }
 }

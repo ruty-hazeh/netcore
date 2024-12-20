@@ -1,9 +1,12 @@
-﻿using Pool.Core.models;
+﻿using AutoMapper;
+using Pool.Core.Dtos;
+using Pool.Core.models;
 using Pool.Core.Repositories;
 using Pool.Core.Services;
 using Pool.Data.Repositories;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,16 +14,16 @@ using System.Threading.Tasks;
 
 namespace Pool.Service
 {
-    public class SwimmerService: ISwimmerService
+    public class SwimmerService : ISwimmerService
     {
 
-        //private readonly ISwimmerRepository _swimmerRepository;
         private readonly IRepositoryManager _repositoryManager;
+        private readonly IMapper _mapper;
 
-        public SwimmerService(ISwimmerRepository swimmerRepository, IRepositoryManager repositoryManager)
+        public SwimmerService(IRepositoryManager repositoryManager, IMapper mapper)
         {
-            //_swimmerRepository = swimmerRepository;
             _repositoryManager = repositoryManager;
+            _mapper = mapper;
         }
 
         public List<Swimmer> GetAll()
@@ -35,23 +38,28 @@ namespace Pool.Service
         {
             return _repositoryManager.Swimmers.GetSwimmersByGender(genderSwimmer);
         }
-        public void Post(Swimmer swimmer)
+        public Swimmer Post(SwimmerPostDTO swimmer)
         {
-            //swimmer.Id = ++SwimmerCount;
-            _repositoryManager.Swimmers.Post(swimmer);
-            _repositoryManager.Save();
-        }
-        public void Put(int id, Swimmer swimmer)
-        {
-            _repositoryManager.Swimmers.Put(id, swimmer);
-            _repositoryManager.Save();
+            var swimmeryMap = _mapper.Map<Swimmer>(swimmer);
 
-        }
-        public void PutStatus(int id, bool status)
-        {
-            _repositoryManager.Swimmers.PutStatus(id, status);
+            var res = _repositoryManager.Swimmers.Post(swimmeryMap);
             _repositoryManager.Save();
+            return res;
+        }
 
+        public Swimmer Put(int id, SwimmerPutDTO swimmer)
+        {
+            var swimmeryMap = _mapper.Map<Swimmer>(swimmer);
+
+            var res = _repositoryManager.Swimmers.Put(id, swimmeryMap);
+            _repositoryManager.Save();
+            return res;
+        }
+        public Swimmer PutStatus(int id, bool status)
+        {
+            var res = _repositoryManager.Swimmers.PutStatus(id, status);
+            _repositoryManager.Save();
+            return res;
         }
 
     }

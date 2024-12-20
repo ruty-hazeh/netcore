@@ -75,3 +75,4 @@ C:\Users\User\Desktop\poolהמקורי\Pool.Api\obj\Debug\net6.0\refint\Pool.Api
 C:\Users\User\Desktop\poolהמקורי\Pool.Api\obj\Debug\net6.0\Pool.Api.pdb
 C:\Users\User\Desktop\poolהמקורי\Pool.Api\obj\Debug\net6.0\Pool.Api.genruntimeconfig.cache
 C:\Users\User\Desktop\poolהמקורי\Pool.Api\obj\Debug\net6.0\ref\Pool.Api.dll
+C:\Users\User\Desktop\poolהמקורי\Pool.Api\bin\Debug\net6.0\AutoMapper.dll

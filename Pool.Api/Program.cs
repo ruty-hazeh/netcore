@@ -1,3 +1,4 @@
+using Pool.Core;
 using Pool.Core.models;
 using Pool.Core.Repositories;
 using Pool.Core.Services;
@@ -30,6 +31,8 @@ builder.Services.AddScoped<ISwimmerRepository, SwimmerRepository>();
 builder.Services.AddDbContext<DataContext>();
 //builder.Services.AddSingleton<DataContext>();
 builder.Services.AddControllers();
+
+builder.Services.AddAutoMapper(typeof(MappingProfile));
 
 builder.Services.AddControllers().AddJsonOptions(options =>
 {
