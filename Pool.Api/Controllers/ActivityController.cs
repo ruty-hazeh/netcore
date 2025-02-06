@@ -24,56 +24,65 @@ namespace Pool.Api.Controllers
         }
 
         [HttpGet]
-        public ActionResult Get()
+        public async Task<ActionResult> GetAsync()
         {
-            return Ok(_activityService.GetAll());
+            var activities = await _activityService.GetAllAsync();
+            return Ok(activities);
         }
 
         [HttpGet("{id:int}")]
-        public ActionResult Get(int id)
+        public async Task<ActionResult> GetAsync(int id)
         {
-            return Ok(_activityService.GetById(id));
+            var activity = await _activityService.GetByIdAsync(id);
+            return Ok(activity);
         }
 
         [HttpGet("{activityDay}")]
-        public ActionResult Get(Day activityDay)
+        public async Task<ActionResult> GetByDayAsync(Day activityDay)
         {
-            return Ok(_activityService.GetActivitiesByDay(activityDay));
+            var activities = await _activityService.GetActivitiesByDayAsync(activityDay);
+            return Ok(activities);
         }
         [HttpPost]
-        public ActionResult Post([FromBody] ActivityPostDTO activity)
+        public async Task<ActionResult> PostAsync([FromBody] ActivityPostDTO activity)
         {
-            Activity newActivity=_activityService.Post(activity);
-           return Ok(newActivity);
+            Activity newActivity = await _activityService.PostAsync(activity);
+            return Ok(newActivity);
         }
 
         [HttpPut("{id}")]
-        public ActionResult Put(int id, [FromBody] ActivityPutDTO activity)
+        public async Task<ActionResult> PutAsync(int id, [FromBody] ActivityPutDTO activity)
         {
 
-            Activity updateActivity = _activityService.Put(id, activity);
+            Activity updateActivity = await _activityService.PutAsync(id, activity);
             if (updateActivity == null)
             {
-                return NotFound(); 
+                return NotFound();
             }
             return Ok(updateActivity);
 
         }
 
         [HttpPut("{id}/status")]
-        public ActionResult Put(int id, bool status)
+        public async Task<ActionResult> PutAsync(int id, bool status)
         {
-           Activity updateActivity= _activityService.PutStatus(id, status);
+            Activity updateActivity = await _activityService.PutStatusAsync(id, status);
             if (updateActivity == null)
             {
-                return NotFound();  
+                return NotFound();
             }
             return Ok(updateActivity);
         }
-        [HttpDelete]
-        public void Delete(int id)
+        [HttpDelete("{id}")]
+        public async Task<ActionResult> DeleteAsync(int id)
         {
-            _activityService.Delete(id);
+            var activity = await _activityService.GetByIdAsync(id);
+            if (activity == null)
+            {
+                return NotFound();
+            }
+            await _activityService.DeleteAsync(id);
+            return NoContent();
         }
     }
 }

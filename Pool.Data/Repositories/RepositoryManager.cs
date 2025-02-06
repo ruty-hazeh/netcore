@@ -22,10 +22,10 @@ namespace Pool.Data.Repositories
             Swimmers=swimmerRepository;
         }
 
-        public void Save()
-        {
-            _context.SaveChanges();
-        }
+        //public async Task SaveAsync()
+        //{
+        //    await _context.SaveChangesAsync();
+        //}
     }
 
 }

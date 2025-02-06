@@ -12,6 +12,6 @@ namespace Pool.Core.Repositories
         IGuideRepository Guides { get; }
         ISwimmerRepository Swimmers { get; }
 
-        void Save();
+        //Task SaveAsync();
     }
 }

@@ -25,44 +25,39 @@ namespace Pool.Service
             _mapper = mapper;
         }
 
-        public List<Activity> GetAll()
+        public async Task<List<Activity>> GetAllAsync()
         {
-            return _repositoryManager.Activities.GetAll();
+            return await _repositoryManager.Activities.GetAllAsync();
         }
-        public Activity GetById(int id)
+        public async Task<Activity> GetByIdAsync(int id)
         {
-            return _repositoryManager.Activities.GetById(id);
+            return await _repositoryManager.Activities.GetByIdAsync(id);
 
         }
-        public List<Activity> GetActivitiesByDay(Day activityDay)
+        public async Task<List<Activity>> GetActivitiesByDayAsync(Day activityDay)
         {
-            return _repositoryManager.Activities.GetActivitiesByDay(activityDay);
+            return await _repositoryManager.Activities.GetActivitiesByDayAsync(activityDay);
         }
-        public Activity Post(ActivityPostDTO activity)
+        public async Task<Activity> PostAsync(ActivityPostDTO activity)
         {
             var activityMap = _mapper.Map<Activity>(activity);
-            var res = _repositoryManager.Activities.Post(activityMap);
-            _repositoryManager.Save();
-            return res;
+            return await _repositoryManager.Activities.PostAsync(activityMap);
         }
-        public Activity Put(int id, ActivityPutDTO activity)
-        {
-            var activityMap = _mapper.Map<Activity>(activity);
-            var res = _repositoryManager.Activities.Put(id, activityMap);
-            _repositoryManager.Save();
-            return res;
-        }
-        public Activity PutStatus(int id, bool status)
-        {
-            var res = _repositoryManager.Activities.PutStatus(id, status);
-            _repositoryManager.Save();
-            return res;
-        }
-        public void Delete(int id)
-        {
-            _repositoryManager.Activities.Delete(id);
-            _repositoryManager.Save();
 
+        public async Task<Activity> PutAsync(int id, ActivityPutDTO activity)
+        {
+            var activityMap = _mapper.Map<Activity>(activity);
+            return await _repositoryManager.Activities.PutAsync(id, activityMap);
+        }
+
+        public async Task<Activity> PutStatusAsync(int id, bool status)
+        {
+            return await _repositoryManager.Activities.PutStatusAsync(id, status);
+        }
+
+        public async Task DeleteAsync(int id)
+        {
+            await _repositoryManager.Activities.DeleteAsync(id);
         }
 
 

@@ -17,29 +17,30 @@ namespace Pool.Data.Repositories
         {
             _context = context;
         }
-        public List<Activity> GetAll()
+        public  async Task<List<Activity>> GetAllAsync()
         {
-            return _context.activities.Include(a=>a.Guide).Include(ac=>ac.ActivitySwimmers).ToList();
+            return await _context.activities.Include(a=>a.Guide).Include(ac=>ac.ActivitySwimmers).ToListAsync();
         }
-        public Activity GetById(int id)
+        public async Task<Activity> GetByIdAsync(int id)
         {
-            Activity a = _context.activities.SingleOrDefault(act => act.Id == id);
+            Activity a = await _context.activities.SingleOrDefaultAsync(act => act.Id == id);
             if (a != null)
                 return a;
             return null;
         }
-        public List<Activity> GetActivitiesByDay(Day activityDay)
+        public async Task<List<Activity>> GetActivitiesByDayAsync(Day activityDay)
         {
-            return _context.activities.Where(a => a.ActivityDay == activityDay).ToList();
+            return  await _context.activities.Where(a => a.ActivityDay == activityDay).ToListAsync();
         }
-        public Activity Post(Activity activity)
+        public async Task<Activity> PostAsync(Activity activity)
         {
-           _context.activities.Add(activity);
+            _context.activities.Add(activity);
+            await _context.SaveChangesAsync(); 
             return activity;
         }
-        public Activity Put(int id, Activity activity)
+        public async Task<Activity> PutAsync(int id, Activity activity)
         {
-            Activity a = _context.activities.SingleOrDefault(act=> act.Id==id);
+            Activity a =await _context.activities.SingleOrDefaultAsync(act=> act.Id==id);
             if (a == null) return null;
             else
             {
@@ -52,18 +53,21 @@ namespace Pool.Data.Repositories
             }
             return a;
         }
-        public Activity PutStatus(int id, bool status)
+        public async Task<Activity> PutStatusAsync(int id, bool status)
         {
-            Activity a = _context.activities.SingleOrDefault(act => act.Id == id);
+            Activity a =await _context.activities.SingleOrDefaultAsync(act => act.Id == id);
             if (a!=null)
                 a.Status=status;
             return a;
         }
-        public void Delete(int id)
+        public async Task DeleteAsync(int id)
         {
-            Activity a = _context.activities.SingleOrDefault(act => act.Id == id);
-            if(a!=null)
-                _context.activities.Remove(a);
+            var activity = await _context.activities.SingleOrDefaultAsync(act => act.Id == id);
+            if (activity != null)
+            {
+                _context.activities.Remove(activity);
+                await _context.SaveChangesAsync();
+            }
         }
 
     }

@@ -9,14 +9,14 @@ namespace Pool.Core.Repositories
 {
     public interface IActivityRepository
     {
-        public List<Activity> GetAll();
-        public Activity GetById(int id);
-        public List<Activity> GetActivitiesByDay(Day activityDay);
+        public Task<List<Activity>> GetAllAsync();
+        public Task<Activity> GetByIdAsync(int id);
+        public Task<List<Activity>> GetActivitiesByDayAsync(Day activityDay);
 
-        public Activity Post(Activity activity);
-        public Activity Put(int id, Activity activity);
-        public Activity PutStatus(int id, bool status);
-        public void Delete(int id);
+        public Task<Activity> PostAsync(Activity activity);
+        public Task<Activity> PutAsync(int id, Activity activity);
+        public Task<Activity> PutStatusAsync(int id, bool status);
+        public Task DeleteAsync(int id);
 
     }
 }
